@@ -1,4 +1,5 @@
 import {
+  Link,
   Links,
   Meta,
   Outlet,
@@ -48,3 +49,32 @@ export function Layout({ children }: { children: React.ReactNode }) {
 export default function App() {
   return <Outlet />;
 }
+
+// export function ErrorBoundary({ error }) {
+//   return (
+//     <html lang="en" className="bg-gray-100 h-full">
+//       <head>
+//         <meta charSet="utf-8" />
+//         <meta name="viewport" content="width=device-width, initial-scale=1" />
+//         <Meta />
+//         <Links />
+//         <title>An error occurred!</title>
+//       </head>
+//       <body className="flex flex-col min-h-screen">
+//         <header className="bg-white shadow-md py-4 px-6">
+//           <MainNavigation />
+//         </header>
+//         <main className="flex-grow flex flex-col justify-center items-center px-4 py-8 bg-gray-50 text-center">
+//           <h1 className="text-4xl font-bold text-red-600 mb-4">An error occurred!</h1>
+//           <p className="text-lg text-gray-700 mb-4">{error.message}</p>
+//           <p className="text-lg text-blue-500">
+//             Back to <Link to="/" className="text-blue-600 underline">Safety</Link>!
+//           </p>
+//         </main>
+//         <ScrollRestoration />
+//         <Scripts />
+//       </body>
+//     </html>
+//   );
+// }
+

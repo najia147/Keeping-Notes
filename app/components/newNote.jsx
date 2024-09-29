@@ -1,12 +1,18 @@
+import { Form, useActionData, useNavigation } from '@remix-run/react';
+
+
 export default function NewNote() {
+  const data = useActionData();
+  const navigation = useNavigation();
+
+  const isSubmitting = navigation.state === 'submitting';
+
   return (
-    <form
+    <Form
       method="post"
-      className="max-w-md mx-auto bg-white p-6 mt-10 rounded-md shadow-lg"
+      className="max-w-md mx-auto bg-gray-100  p-6 mt-10 rounded-md shadow-lg"
     >
-      <h2 className="text-2xl font-semibold text-gray-800 mb-4">
-        Create a New Note
-      </h2>
+    {data?.message && <p>{data.message}</p>}
       <p className="mb-4">
         <label
           htmlFor="title"
@@ -38,12 +44,12 @@ export default function NewNote() {
       </p>
       <div className="text-right">
         <button
-          type="submit"
-          className="px-4 py-2 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition"
+          className="px-4 py-2 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition  justify-center"
+          disabled={isSubmitting}
         >
-          Add Note
+          { isSubmitting ? 'Adding...' : 'Add Note'}
         </button>
       </div>
-    </form>
+    </Form>
   );
 }
